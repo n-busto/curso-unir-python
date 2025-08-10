@@ -49,6 +49,8 @@ def calcular_promedio(calificaciones):
     :param calificaciones: calificaciones de las que se hará el promedio
     :return: promedio de las calificaciones
     """
+    if(len(calificaciones) == 0):
+        return 0
     return sum(calificaciones) / len(calificaciones)
 
 
@@ -98,7 +100,7 @@ if __name__ == "__main__":
     materias, notas = ingresar_calificaciones()
     print("materias: ", materias)
     print("notas: ", notas)
-    print("Promedio: ", calcular_promedio(notas))
+    print("Promedio: ", calcular_promedio([]))
     aprobadas, reprobadas = determinar_estado(notas)
     print("aprobadas: ")
     for indice in aprobadas:
