@@ -67,9 +67,9 @@ def determinar_estado(calificaciones, umbral=5.0):
     reprobadas = []
     for indice in range(0, len(calificaciones)):
         if calificaciones[indice] >= umbral:
-            aprobadas.append(nombres[indice])
+            aprobadas.append(indice)
         else:
-            reprobadas.append(nombres[indice])
+            reprobadas.append(indice)
 
     return aprobadas, reprobadas
 
@@ -101,8 +101,12 @@ if __name__ == "__main__":
     print("notas: ", notas)
     print("Promedio: ", calcular_promedio(notas))
     aprobadas, reprobadas = determinar_estado(calificaciones)
-    print("aprobadas: ", aprobadas)
-    print("reprobadas: ", reprobadas)
+    print("aprobadas: ")
+    for indice in aprobadas:
+        print(nombres[indice])
+    print("reprobadas: ")
+    for indice in reprobadas:
+        print(nombres[indice])
     baja, alta = encontrar_extremos(calificaciones)
     print("Extremos: ")
     print("Nota más baja: ", nombres[baja], "(", calificaciones[baja], ")")
