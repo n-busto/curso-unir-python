@@ -1,8 +1,12 @@
-def ingresar_calificaciones(nombres = [], calificaciones = []):
+def ingresar_calificaciones(nombres=None, calificaciones=None):
     """
     Método que permite ingresar datos
     :return: listas creadas
     """
+    if calificaciones is None:
+        calificaciones = []
+    if nombres is None:
+        nombres = []
     nombres.append(obtener_materia())
     calificaciones.append(obtener_calificacion())
 
