@@ -78,8 +78,11 @@ def encontrar_extremos(calificaciones):
     """
     Busca el indice de la mayor y menor nota en la lista proporcionada
     :param calificaciones: calificaciones que se comprobaran
-    :return: indice de la nota más baja e indice de la nota más alta
+    :return: indice de la nota más baja e indice de la nota más alta o None si no se proporcionan valores
     """
+    if len(calificaciones) == 0:
+        return None
+
     baja = 10
     indice_baja = None
     alta = 0
@@ -107,7 +110,10 @@ if __name__ == "__main__":
     print("reprobadas: ")
     for indice in reprobadas:
         print(nombres[indice])
-    baja, alta = encontrar_extremos(calificaciones)
-    print("Extremos: ")
-    print("Nota más baja: ", nombres[baja], "(", calificaciones[baja], ")")
-    print("Nota más alta: ", nombres[alta], "(", calificaciones[alta], ")")
+    extremos = encontrar_extremos(calificaciones)
+    if(isinstance(extremos, tuple)):
+        baja, alta = extremos
+        print("Extremos: ")
+        print("Nota más baja: ", nombres[baja], "(", calificaciones[baja], ")")
+        print("Nota más alta: ", nombres[alta], "(", calificaciones[alta], ")")
+
