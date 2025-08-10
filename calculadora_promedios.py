@@ -53,10 +53,7 @@ def calcular_promedio(calificaciones):
     :param calificaciones: calificaciones de las que se hará el promedio
     :return: promedio de las calificaciones
     """
-    suma = 0
-    for calificacion in calificaciones:
-        suma += calificacion
-    return suma / len(calificaciones)
+    return sum(calificaciones) / len(calificaciones)
 
 
 def determinar_estado(calificaciones, umbral=5.0):
