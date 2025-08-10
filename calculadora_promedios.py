@@ -103,17 +103,17 @@ if __name__ == "__main__":
     print("materias: ", materias)
     print("notas: ", notas)
     print("Promedio: ", calcular_promedio(notas))
-    aprobadas, reprobadas = determinar_estado(calificaciones)
+    aprobadas, reprobadas = determinar_estado(notas)
     print("aprobadas: ")
     for indice in aprobadas:
-        print(nombres[indice])
+        print(materias[indice])
     print("reprobadas: ")
     for indice in reprobadas:
-        print(nombres[indice])
-    extremos = encontrar_extremos(calificaciones)
+        print(materias[indice])
+    extremos = encontrar_extremos(notas)
     if(isinstance(extremos, tuple)):
         baja, alta = extremos
         print("Extremos: ")
-        print("Nota más baja: ", nombres[baja], "(", calificaciones[baja], ")")
-        print("Nota más alta: ", nombres[alta], "(", calificaciones[alta], ")")
+        print("Nota más baja: ", materias[baja], "(", notas[baja], ")")
+        print("Nota más alta: ", materias[alta], "(", notas[alta], ")")
 
