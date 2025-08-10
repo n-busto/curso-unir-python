@@ -1,8 +1,4 @@
-nombres = []
-calificaciones = []
-
-
-def ingresar_calificaciones():
+def ingresar_calificaciones(nombres = [], calificaciones = []):
     """
     Método que permite ingresar datos
     :return: listas creadas
@@ -11,7 +7,7 @@ def ingresar_calificaciones():
     calificaciones.append(obtener_calificacion())
 
     if (input("Desea seguir introduciendo materias? (s/n)") == "s"):
-        ingresar_calificaciones()
+        ingresar_calificaciones(nombres, calificaciones)
 
     return nombres, calificaciones
 
