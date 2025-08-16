@@ -1,43 +1,68 @@
 class Producto:
+    """Clase que encapsula la informacion de un producto"""
+
     def __init__(self, nombre, precio, cantidad):
+        """Constructor de la clase Producto
+
+        Argumentos:
+        nommbre: Nombre del producto
+        precio: Precio del producto
+        cantidad: Cantidad del producto
+        """
         self.nombre = nombre
         self.precio = precio
         self.cantidad = cantidad
 
     def actualizar_precio(self, nuevo_precio):
-        self.precio = nuevo_precio
+        """Actualiza la precio del producto si este es positivo"""
+        if (nuevo_precio > 0):
+            self.precio = nuevo_precio
 
     def actualizar_cantidad(self, nueva_cantidad):
-        self.cantidad = nueva_cantidad
+        """Actualiza la cantidad del producto si es positiva"""
+        if (nueva_cantidad > 0):
+            self.cantidad = nueva_cantidad
 
     def calcular_valor_total(self):
+        """Calcula el valor total del producto teniendo en cuenta su cantidad"""
         return self.precio * self.cantidad
 
     def __str__(self):
+        """Retorna el string del producto"""
         return "Producto: " + self.nombre + "Precio unitario: " + str(self.precio) + "Cantidad: " + str(self.cantidad)
 
 
 class Inventario:
+    """Clase que encapsula la informacion de un inventario"""
     def __init__(self):
+        """Constructor de la clase Inventario
+
+        Genera una lista vacía de productos
+        """
         self.productos = []
 
     def agregar_producto(self, producto):
+        """Agrega un producto"""
         self.productos.append(producto)
 
     def buscar_producto(self, nombre):
+        """Busca un producto"""
         for producto in self.productos:
             if producto.nombre == nombre:
                 return producto
         return None
 
     def calcular_valor_inventario(self):
+        """Calcula el valor total del inventario"""
         return sum(list(map(lambda x: x.calcular_valor_total(), self.productos)))
 
     def listar_productos(self):
+        """Lista todos los productos"""
         return list(map(lambda x: str(x), self.productos))
 
 
 def menu_principal(inventario):
+    """Metodo principal que inicializa el menu"""
     opt = -1
     while (opt != 0):
         print("Elija una opción:")
