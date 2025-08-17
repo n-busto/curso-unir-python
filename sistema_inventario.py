@@ -92,7 +92,7 @@ def menu_principal(inventario):
                     print(producto)
             else:
                 print("Opcion no valida")
-        except:
+        except ValueError:
             print("Opcion no valida")
 
 
@@ -109,7 +109,7 @@ def crear_producto():
     while (precio <= 0.0):
         try:
             precio = float(input("Ingrese precio: "))
-        except:
+        except ValueError:
             precio = 0.0
 
         if (precio <= 0.0):
@@ -119,8 +119,7 @@ def crear_producto():
     while (cantidad <= 0):
         try:
             cantidad = int(input("Ingrese cantidad: "))
-        except:
-            print(e)
+        except ValueError:
             cantidad = 0
 
         if (cantidad <= 0):
