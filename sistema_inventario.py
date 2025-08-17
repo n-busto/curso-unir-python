@@ -29,7 +29,7 @@ class Producto:
 
     def __str__(self):
         """Retorna el string del producto"""
-        return "Producto: " + self.nombre + "Precio unitario: " + str(self.precio) + "Cantidad: " + str(self.cantidad)
+        return "Producto: " + self.nombre + " Precio unitario: " + str(self.precio) + " Cantidad: " + str(self.cantidad)
 
 
 class Inventario:
@@ -76,7 +76,7 @@ def menu_principal(inventario):
             if opt == 0:
                 print("Hasta otra!")
             elif opt == 1:
-                print("TODO")
+                inventario.agregar_producto(crear_producto())
             elif opt == 2:
                 print("TODO")
             elif opt == 3:
@@ -87,9 +87,42 @@ def menu_principal(inventario):
                     print(producto)
             else:
                 print("Opcion no valida")
-        except:
+        except Exception as e:
+            print(e)
             print("Opcion no valida")
 
+def crear_producto():
+    print("Insertar datos de producto")
+
+    nombre = ""
+    while(nombre == ""):
+        nombre = input("Ingrese nombre: ")
+        if(nombre == ""):
+            print("Nombre inválido")
+
+    precio = 0.0
+    while(precio <= 0.0):
+        try:
+            precio = float(input("Ingrese precio: "))
+        except Exception as e:
+            print(e)
+            precio = 0.0
+
+        if(precio <= 0.0):
+            print("Precio inválido")
+
+    cantidad = 0
+    while(cantidad <= 0):
+        try:
+            cantidad = int(input("Ingrese cantidad: "))
+        except Exception as e:
+            print(e)
+            cantidad = 0
+
+        if(cantidad <= 0):
+            print("Cantidad inválida")
+
+    return Producto(nombre, precio, cantidad)
 
 if __name__ == "__main__":
     menu_principal(Inventario())
