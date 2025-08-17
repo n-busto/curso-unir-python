@@ -9,6 +9,13 @@ class Producto:
         precio: Precio del producto
         cantidad: Cantidad del producto
         """
+        if (not isinstance(nombre, str) or nombre == ""):
+            raise TypeError("Nombre inválido")
+        if (not isinstance(precio, float) or precio <= 0.0):
+            raise TypeError("Precio inválido")
+        if (not isinstance(cantidad, int) or cantidad <= 0):
+            raise TypeError("Cantidad inválida")
+
         self.nombre = nombre
         self.precio = precio
         self.cantidad = cantidad
@@ -17,11 +24,15 @@ class Producto:
         """Actualiza la precio del producto si este es positivo"""
         if (nuevo_precio > 0):
             self.precio = nuevo_precio
+        else:
+            raise TypeError("Precio inválido")
 
     def actualizar_cantidad(self, nueva_cantidad):
         """Actualiza la cantidad del producto si es positiva"""
         if (nueva_cantidad > 0):
             self.cantidad = nueva_cantidad
+        else:
+            raise TypeError("Cantidad inválida")
 
     def calcular_valor_total(self):
         """Calcula el valor total del producto teniendo en cuenta su cantidad"""
