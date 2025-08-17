@@ -34,6 +34,7 @@ class Producto:
 
 class Inventario:
     """Clase que encapsula la informacion de un inventario"""
+
     def __init__(self):
         """Constructor de la clase Inventario
 
@@ -78,7 +79,11 @@ def menu_principal(inventario):
             elif opt == 1:
                 inventario.agregar_producto(crear_producto())
             elif opt == 2:
-                print("TODO")
+                nombre = input("Nombre del producto: ")
+                if (nombre == ""):
+                    print("Debe introducir un nombre")
+                else:
+                    print(inventario.buscar_producto(nombre))
             elif opt == 3:
                 print(inventario.calcular_valor_inventario())
             elif opt == 4:
@@ -91,38 +96,40 @@ def menu_principal(inventario):
             print(e)
             print("Opcion no valida")
 
+
 def crear_producto():
     print("Insertar datos de producto")
 
     nombre = ""
-    while(nombre == ""):
+    while (nombre == ""):
         nombre = input("Ingrese nombre: ")
-        if(nombre == ""):
+        if (nombre == ""):
             print("Nombre inválido")
 
     precio = 0.0
-    while(precio <= 0.0):
+    while (precio <= 0.0):
         try:
             precio = float(input("Ingrese precio: "))
         except Exception as e:
             print(e)
             precio = 0.0
 
-        if(precio <= 0.0):
+        if (precio <= 0.0):
             print("Precio inválido")
 
     cantidad = 0
-    while(cantidad <= 0):
+    while (cantidad <= 0):
         try:
             cantidad = int(input("Ingrese cantidad: "))
         except Exception as e:
             print(e)
             cantidad = 0
 
-        if(cantidad <= 0):
+        if (cantidad <= 0):
             print("Cantidad inválida")
 
     return Producto(nombre, precio, cantidad)
+
 
 if __name__ == "__main__":
     menu_principal(Inventario())
