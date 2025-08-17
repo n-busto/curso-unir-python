@@ -55,7 +55,10 @@ class Inventario:
 
     def agregar_producto(self, producto):
         """Agrega un producto"""
-        self.productos.append(producto)
+        if(isinstance(producto, Producto)):
+            self.productos.append(producto)
+        else:
+            raise TypeError("Se ha proporcionado un objeto que no es un producto")
 
     def buscar_producto(self, nombre):
         """Busca un producto"""
