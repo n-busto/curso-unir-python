@@ -13,7 +13,7 @@ class Producto:
             raise TypeError("Nombre inválido")
         if (not isinstance(precio, float) or precio <= 0.0):
             raise TypeError("Precio inválido")
-        if (not isinstance(cantidad, int) or cantidad <= 0):
+        if (not isinstance(cantidad, int) or cantidad < 0):
             raise TypeError("Cantidad inválida")
 
         self.nombre = nombre
@@ -29,7 +29,7 @@ class Producto:
 
     def actualizar_cantidad(self, nueva_cantidad):
         """Actualiza la cantidad del producto si es positiva"""
-        if (nueva_cantidad > 0):
+        if (nueva_cantidad >= 0):
             self.cantidad = nueva_cantidad
         else:
             raise TypeError("Cantidad inválida")
@@ -126,14 +126,14 @@ def crear_producto():
         if (precio <= 0.0):
             print("Precio inválido")
 
-    cantidad = 0
-    while (cantidad <= 0):
+    cantidad = -1
+    while (cantidad < 0):
         try:
             cantidad = int(input("Ingrese cantidad: "))
         except ValueError:
-            cantidad = 0
+            cantidad = -1
 
-        if (cantidad <= 0):
+        if (cantidad < 0):
             print("Cantidad inválida")
 
     return Producto(nombre, precio, cantidad)
