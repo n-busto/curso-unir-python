@@ -103,8 +103,11 @@ def menu_principal(inventario):
                 print(inventario.calcular_valor_inventario())
             elif opt == 4:
                 productos = inventario.listar_productos()
-                for producto in productos:
-                    print(producto)
+                if(productos):
+                    for producto in productos:
+                        print(producto)
+                else:
+                    print("El inventario está vacío")
             else:
                 print("Opcion no valida")
         except ValueError:
