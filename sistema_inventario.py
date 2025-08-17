@@ -94,7 +94,11 @@ def menu_principal(inventario):
                 if (nombre == ""):
                     print("Debe introducir un nombre")
                 else:
-                    print(inventario.buscar_producto(nombre))
+                    producto = inventario.buscar_producto(nombre)
+                    if(producto == None):
+                        print("No existe el producto")
+                    else:
+                        print(producto)
             elif opt == 3:
                 print(inventario.calcular_valor_inventario())
             elif opt == 4:
