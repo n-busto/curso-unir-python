@@ -11,7 +11,7 @@ class Producto:
         """
         if (not isinstance(nombre, str) or nombre == ""):
             raise TypeError("Nombre inválido")
-        if (not isinstance(precio, float) or precio <= 0.0):
+        if ((not isinstance(precio, float) and not isinstance(precio, int)) or precio < 0):
             raise TypeError("Precio inválido")
         if (not isinstance(cantidad, int) or cantidad < 0):
             raise TypeError("Cantidad inválida")
@@ -126,14 +126,14 @@ def crear_producto():
         if (nombre == ""):
             print("Nombre inválido")
 
-    precio = 0.0
-    while (precio <= 0.0):
+    precio = -0.1
+    while (precio < 0.0):
         try:
             precio = float(input("Ingrese precio: "))
         except ValueError:
-            precio = 0.0
+            precio = -0.1
 
-        if (precio <= 0.0):
+        if (precio < 0.0):
             print("Precio inválido")
 
     cantidad = -1
